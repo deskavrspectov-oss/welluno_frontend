@@ -30,7 +30,7 @@ const events = [
     description: "Bring mindfulness and stress reduction techniques to your workplace. Enhance focus and well-being.",
     date: "Every Tuesday",
     time: "10:00 AM",
-    location: "Virtual / On-site",
+    // location: "Virtual / On-site",
     attendees: 12,
     category: "culture-builders",
     color: "from-blue-500 to-indigo-500",
@@ -48,7 +48,7 @@ const events = [
     description: "A series of sessions designed to cultivate inner peace and emotional resilience.",
     date: "Every Thursday",
     time: "6:00 PM",
-    location: "Virtual",
+    // location: "Virtual",
     attendees: 15,
     category: "culture-builders",
     color: "from-teal-500 to-cyan-500",
@@ -67,7 +67,7 @@ const events = [
     description: "Short guided meditations to reset your mind during a busy day.",
     date: "Daily",
     time: "12:00 PM & 3:00 PM",
-    location: "Virtual",
+    // location: "Virtual",
     attendees: 14,
     category: "daily-resets",
     color: "from-green-500 to-emerald-500",
@@ -85,7 +85,7 @@ const events = [
     description: "Deepen your mindfulness practice with expert guidance and techniques.",
     date: "Mondays & Wednesdays",
     time: "9:00 AM",
-    location: "Virtual",
+    // location: "Virtual",
     attendees: 10,
     category: "daily-resets",
     color: "from-purple-500 to-violet-500",
@@ -103,7 +103,7 @@ const events = [
     description: "Quick, fun activities to recharge your brain and boost creativity.",
     date: "Tue & Thu",
     time: "2:30 PM",
-    location: "Virtual",
+    // location: "Virtual",
     attendees: 13,
     category: "daily-resets",
     color: "from-yellow-500 to-amber-500",
@@ -122,7 +122,7 @@ const events = [
     description: "Intensive workshops to identify stress triggers and learn coping strategies.",
     date: "First Saturday monthly",
     time: "10:00 AM - 2:00 PM",
-    location: "In-person (various cities)",
+    // location: "In-person (various cities)",
     attendees: 12,
     category: "deep-dives",
     color: "from-red-500 to-orange-500",
@@ -140,7 +140,7 @@ const events = [
     description: "Explore the science of happiness and practice exercises to boost joy.",
     date: "Mar 20, 2025",
     time: "1:00 PM - 5:00 PM",
-    location: "Bangalore",
+    // location: "Bangalore",
     attendees: 11,
     category: "deep-dives",
     color: "from-pink-500 to-rose-500",
@@ -158,7 +158,7 @@ const events = [
     description: "A transformative program for those feeling overwhelmed. Reclaim your energy.",
     date: "Apr 10-12, 2025",
     time: "9:00 AM - 4:00 PM",
-    location: "Rishikesh",
+    // location: "Rishikesh",
     attendees: 10,
     category: "deep-dives",
     color: "from-indigo-500 to-purple-500",
@@ -177,7 +177,7 @@ const events = [
     description: "A rejuvenating beach retreat with yoga, meditation, and wellness workshops.",
     date: "May 5-9, 2025",
     time: "Full days",
-    location: "Goa",
+    // location: "Goa",
     attendees: 14,
     category: "ultimate-getaways",
     color: "from-cyan-500 to-sky-500",
@@ -195,7 +195,7 @@ const events = [
     description: "Short weekend getaways focused on relaxation and self-care.",
     date: "Various weekends",
     time: "Fri-Sun",
-    location: "Multiple locations",
+    // location: "Multiple locations",
     attendees: 13,
     category: "ultimate-getaways",
     color: "from-emerald-500 to-teal-500",
@@ -213,7 +213,7 @@ const events = [
     description: "A luxury retreat in the mountains to disconnect and recharge.",
     date: "Jun 15-20, 2025",
     time: "Full days",
-    location: "Manali",
+    // location: "Manali",
     attendees: 15,
     category: "ultimate-getaways",
     color: "from-blue-500 to-indigo-500",
@@ -597,10 +597,10 @@ const EventsSection = () => {
                         <Clock className="w-4 h-4 text-gray-500 dark:text-gray-400 flex-shrink-0" />
                         <span className="text-xs text-gray-700 dark:text-gray-300 truncate">{event.time}</span>
                       </div>
-                      <div className="flex items-center gap-2 min-w-0">
+                      {/* <div className="flex items-center gap-2 min-w-0">
                         <MapPin className="w-4 h-4 text-gray-500 dark:text-gray-400 flex-shrink-0" />
                         <span className="text-xs text-gray-700 dark:text-gray-300 truncate">{event.location}</span>
-                      </div>
+                      </div> */}
                       <div className="flex items-center gap-2 min-w-0">
                         <Users className="w-4 h-4 text-gray-500 dark:text-gray-400 flex-shrink-0" />
                         <span className="text-xs text-gray-700 dark:text-gray-300">{event.attendees} joined</span>

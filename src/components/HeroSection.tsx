@@ -211,7 +211,7 @@ const HeroSection = () => {
               animate={{ opacity: [0.8, 1, 0.8] }}
               transition={{ duration: 3, repeat: Infinity }}
             >
-              Launching Soon 🚀
+              Launching Soon 
             </motion.span>
           </motion.div>
 

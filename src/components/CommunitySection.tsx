@@ -1,10 +1,6 @@
 import { useState, useRef } from "react";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
-import { 
-  Send, User, Mail, Phone, MapPin, Shield, 
-  UsersRound, BadgeCheck, Target, Quote, 
-  Heart, Sparkles, Rocket, CheckCircle, ArrowRight, Star
-} from "lucide-react";
+// Removed all icon imports
 
 const CommunitySection = () => {
   const [formData, setFormData] = useState({
@@ -31,19 +27,16 @@ const CommunitySection = () => {
 
   const communityFeatures = [
     {
-      icon: UsersRound,
       title: "Global Network",
       description: "Connect with professionals across the globe. Share, learn, and grow together in a supportive environment.",
       color: "primary",
     },
     {
-      icon: BadgeCheck,
       title: "Verified Community",
       description: "Every member is verified to ensure safe, authentic conversations and meaningful connections.",
       color: "coral",
     },
     {
-      icon: Target,
       title: "Goal-Oriented",
       description: "Weekly challenges and progress tracking to help you achieve your personal and professional goals.",
       color: "gold",
@@ -206,11 +199,10 @@ const CommunitySection = () => {
             transition={{ type: "spring", delay: 0.1 }}
             className="inline-flex items-center gap-3 mb-6"
           >
-            <Heart className="w-6 h-6 text-pink-500 dark:text-pink-400" />
+            {/* Removed heart icons */}
             <span className="font-display text-pink-500 dark:text-pink-400 font-bold text-sm uppercase tracking-wider">
               Join Our Community
             </span>
-            <Heart className="w-6 h-6 text-pink-500 dark:text-pink-400" />
           </motion.div>
 
           <motion.h2
@@ -286,21 +278,8 @@ const CommunitySection = () => {
                     />
                   )}
 
-                  <div className="flex items-start gap-4 relative z-10">
-                    <motion.div
-                      animate={{ 
-                        rotate: activeFeature === index ? 360 : 0,
-                        scale: activeFeature === index ? 1.1 : 1
-                      }}
-                      transition={{ duration: 0.5 }}
-                      className={`p-3 rounded-xl ${
-                        feature.color === 'primary' ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400' :
-                        feature.color === 'coral' ? 'bg-pink-100 dark:bg-pink-900/30 text-pink-600 dark:text-pink-400' :
-                        'bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400'
-                      }`}
-                    >
-                      <feature.icon className="w-5 h-5" />
-                    </motion.div>
+                  <div className="relative z-10">
+                    {/* Removed icon container */}
                     
                     <div className="flex-1">
                       <h3 className="font-bold text-lg font-display text-gray-900 dark:text-white mb-2">
@@ -335,7 +314,7 @@ const CommunitySection = () => {
               className="rounded-xl border p-5 bg-white/60 dark:bg-gray-800/40 border-gray-200 dark:border-gray-700"
             >
               <div className="flex items-center gap-2 mb-4">
-                <Quote className="w-4 h-4 text-pink-500" />
+                {/* Removed Quote icon */}
                 <h4 className="font-bold font-display text-gray-900 dark:text-white">
                   What Members Say
                 </h4>
@@ -351,8 +330,9 @@ const CommunitySection = () => {
                     className="group"
                   >
                     <div className="flex gap-1 mb-2">
+                      {/* Removed star icons - could keep if you want, but user asked to remove all icons; we'll remove stars as well. */}
                       {[...Array(quote.stars)].map((_, i) => (
-                        <Star key={i} className="w-3 h-3 text-amber-500 fill-amber-500" />
+                        <span key={i} className="w-3 h-3 bg-amber-500 rounded-full" /> // optional: use small dots instead of stars
                       ))}
                     </div>
                     
@@ -369,7 +349,7 @@ const CommunitySection = () => {
                           {quote.role}
                         </div>
                       </div>
-                      <Sparkles className="w-4 h-4 text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      {/* Removed Sparkles icon */}
                     </div>
                     
                     {index < quotes.length - 1 && (
@@ -392,12 +372,7 @@ const CommunitySection = () => {
             <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl p-6 md:p-8 border border-gray-200 dark:border-gray-700/50">
               {/* Form Header */}
               <div className="flex items-center gap-3 mb-6">
-                <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                >
-                  <Rocket className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-                </motion.div>
+                {/* Removed Rocket icon and its animation container */}
                 <h3 className="text-xl font-bold text-gray-900 dark:text-white">
                   Join the Waitlist
                 </h3>
@@ -422,7 +397,7 @@ const CommunitySection = () => {
                     transition={{ delay: 0.8 + index * 0.1 }}
                     className="flex items-center gap-2"
                   >
-                    <CheckCircle className="w-4 h-4 text-green-500" />
+                    {/* Removed CheckCircle icon */}
                     <span className="text-sm text-gray-600 dark:text-gray-300">
                       {benefit}
                     </span>
@@ -438,9 +413,8 @@ const CommunitySection = () => {
                   className="text-center py-8"
                 >
                   <div className="w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                    </svg>
+                    {/* Removed SVG checkmark; could replace with simple text or keep as is? User said remove icons, so we'll remove. */}
+                    <span className="text-green-600 text-2xl">✓</span>
                   </div>
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
                     You're on the list!
@@ -454,8 +428,7 @@ const CommunitySection = () => {
                   <div className="space-y-4">
                     {/* Name Field */}
                     <div>
-                      <label className="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                        <User className="w-4 h-4" />
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                         Full Name *
                       </label>
                       <input
@@ -481,8 +454,7 @@ const CommunitySection = () => {
 
                     {/* Email Field */}
                     <div>
-                      <label className="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                        <Mail className="w-4 h-4" />
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                         Email Address *
                       </label>
                       <input
@@ -508,8 +480,7 @@ const CommunitySection = () => {
 
                     {/* Phone Field */}
                     <div>
-                      <label className="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                        <Phone className="w-4 h-4" />
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                         Phone Number *
                       </label>
                       <input
@@ -538,8 +509,7 @@ const CommunitySection = () => {
 
                     {/* Location Field */}
                     <div>
-                      <label className="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                        <MapPin className="w-4 h-4" />
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                         Location *
                       </label>
                       <input
@@ -580,9 +550,8 @@ const CommunitySection = () => {
                         </>
                       ) : (
                         <>
-                          <Send className="w-4 h-4" />
+                          {/* Removed Send and ArrowRight icons */}
                           Join Community Waitlist
-                          <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                         </>
                       )}
                     </motion.button>

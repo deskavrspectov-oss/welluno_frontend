@@ -1,26 +1,26 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom"; // <-- new import
+import { useNavigate } from "react-router-dom";
 import { Menu, X, Moon, Sun, Sparkles, ChevronRight, ExternalLink, Gamepad2, Brain, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import wellunoLogo from "@/assets/welluno-logo.jpg";
 
-// Updated navLinks – now includes Blog link
+// Updated navLinks – now includes Blog link with emoji
 const navLinks = [
   { href: "#about", label: "What", emoji: "" },
   { href: "#wellness-game", label: "Play", emoji: "" },
-  { href: "#spectrum", label: "Mental Health", emoji: "", icon: Brain },
+  // { href: "#spectrum", label: "Mental Health", emoji: "", icon: Brain },
   { href: "#solutions", label: "How", emoji: "" },
   { href: "#events", label: "For Me", emoji: "" },
   { href: "#organizations", label: "For Organizations", emoji: "" },
   { href: "#board", label: "Team", emoji: "" },
   { href: "#community", label: "Community", emoji: "" },
-  { href: "/blog", label: "Blog", emoji: "" }, // <-- new link
-  { href: "#community", label: "Join Waitlist", emoji: "✨", icon: Sparkles },
+  { href: "/blog", label: "Blog", emoji: "" }, // Added emoji
+  { href: "#community", label: "Join Waitlist", emoji: "", icon: Sparkles },
 ];
 
 const Navbar = () => {
-  const navigate = useNavigate(); // <-- new hook
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -65,7 +65,7 @@ const Navbar = () => {
   // Updated navigation handler – uses react-router for internal paths
   const handleNavClick = (href: string) => {
     if (href.startsWith("/")) {
-      navigate(href); // use React Router for internal pages like /blog
+      navigate(href);
     } else {
       const element = document.querySelector(href);
       if (element) {
@@ -399,23 +399,7 @@ const Navbar = () => {
                         whileTap={{ scale: 0.97 }}
                       >
                         <span className="relative flex items-center gap-2">
-                          {link.label === "Play" && (
-                            <motion.span
-                              animate={{ 
-                                rotate: [0, 10, -10, 0],
-                                scale: [1, 1.1, 0.9, 1]
-                              }}
-                              transition={{ 
-                                duration: 2,
-                                repeat: Infinity,
-                                repeatDelay: 3
-                              }}
-                              className="text-lg"
-                            >
-                              🎮
-                            </motion.span>
-                          )}
-                          {link.emoji && link.label !== "Play" && (
+                          {link.emoji && (
                             <span className="text-lg">{link.emoji}</span>
                           )}
                           {Icon && !link.emoji && (
@@ -726,8 +710,11 @@ const Navbar = () => {
                 </motion.button>
               </motion.div>
 
-              {/* Menu Items */}
-              <div className="p-4 space-y-2">
+              {/* Menu Items - Scrollable Container */}
+              <div 
+                className="p-4 space-y-1 overflow-y-auto" 
+                style={{ maxHeight: 'calc(100vh - 180px)' }}
+              >
                 {navLinks.map((link, index) => {
                   const isCta = isCtaLink(link.label);
                   const isHealthTips = isHealthTipsLink(link.label);
@@ -744,7 +731,7 @@ const Navbar = () => {
                         stiffness: 100
                       }}
                       onClick={() => handleNavClick(link.href)}
-                      className={`w-full flex items-center justify-between p-4 rounded-xl transition-all duration-200 group ${
+                      className={`w-full flex items-center justify-between py-3 px-4 rounded-xl transition-all duration-200 group ${
                         isDark
                           ? "hover:bg-gray-800/50 text-gray-200 hover:text-white"
                           : "hover:bg-gray-100 text-gray-800 hover:text-gray-900"
@@ -752,8 +739,8 @@ const Navbar = () => {
                       whileHover={{ x: 5 }}
                       whileTap={{ scale: 0.98 }}
                     >
-                      <span className="text-lg font-medium flex items-center gap-3">
-                        {link.emoji && <span className="text-xl">{link.emoji}</span>}
+                      <span className="text-base font-medium flex items-center gap-3"> {/* Reduced to text-base */}
+                        {link.emoji && <span className="text-lg">{link.emoji}</span>} {/* Reduced to text-lg */}
                         {Icon && !link.emoji && <Icon className="w-5 h-5" />}
                         {link.label}
                         {isHealthTips && (

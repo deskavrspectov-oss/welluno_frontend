@@ -1,7 +1,7 @@
 ---
 title: "Corporate Burnout: Early Signs, Causes, and How to Protect Your Mental Health"
 description: "Learn to recognize the early warning signs of corporate burnout and discover practical strategies to protect your mental health at work."
-date: "2025-03-21"
+date: "2026-03-5"
 slug: "corporate-burnout-signs-prevention"
 ---
 

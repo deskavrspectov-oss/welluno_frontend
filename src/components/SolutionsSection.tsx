@@ -589,7 +589,6 @@ const SolutionsSection = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto items-start">
             {solutions.map((solution, index) => {
-              const SolutionIcon = solution.icon;
               const isActive = activeCard === index;
               
               return (
@@ -625,11 +624,8 @@ const SolutionsSection = () => {
                       )}
                     </AnimatePresence>
 
-                    {/* Icon */}
-                    <div className={`inline-flex items-center justify-center w-14 h-14 rounded-xl ${solution.iconBg} mb-4`}>
-                      <SolutionIcon className="w-7 h-7 text-white" />
-                    </div>
-                    
+                    {/* Icon removed */}
+
                     {/* Title */}
                     <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
                       {solution.title}
@@ -686,7 +682,7 @@ const SolutionsSection = () => {
                       )}
                     </AnimatePresence>
                     
-                    {/* Click hint - positioned at bottom */}
+                    {/* Click hint */}
                     <div className="mt-auto pt-4 border-t border-gray-200/50 dark:border-gray-700/50">
                       <div className="flex items-center justify-between">
                         <span className="text-xs text-gray-500 dark:text-gray-400">

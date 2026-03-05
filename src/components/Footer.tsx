@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { Heart, Mail, Linkedin, Phone, Instagram, ArrowUp, Sparkles } from "lucide-react";
 import { useState, useEffect } from "react";
+// All icon imports removed
 import wellunoLogo from "@/assets/welluno-logo.jpg";
 import ShootingStars from "./ShootingStars";
 import AnimatedLogo from "./AnimatedLogo";
@@ -23,31 +23,12 @@ const footerLinks = {
   ],
 };
 
+// Social links as text only
 const socialLinks = [
-  { 
-    icon: Phone, 
-    href: "tel:+917982904715", 
-    label: "Call Us",
-    ariaLabel: "Call Welluno at 7982904715" 
-  },
-  { 
-    icon: Linkedin, 
-    href: "https://www.linkedin.com/company/welluno/", 
-    label: "LinkedIn",
-    ariaLabel: "Visit Welluno on LinkedIn" 
-  },
-  { 
-    icon: Instagram, 
-    href: "https://www.instagram.com/welluno.in/", 
-    label: "Instagram",
-    ariaLabel: "Visit Welluno on Instagram" 
-  },
-  { 
-    icon: Mail, 
-    href: "mailto:welluno.pvt.ltd@gmail.com", 
-    label: "Email",
-    ariaLabel: "Email Welluno at welluno.pvt.ltd@gmail.com" 
-  },
+  { label: "Call", href: "tel:+917982904715", ariaLabel: "Call Welluno at 7982904715" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/welluno/", ariaLabel: "Visit Welluno on LinkedIn" },
+  { label: "Instagram", href: "https://www.instagram.com/welluno.in/", ariaLabel: "Visit Welluno on Instagram" },
+  { label: "Email", href: "mailto:welluno.pvt.ltd@gmail.com", ariaLabel: "Email Welluno" },
 ];
 
 const Footer = () => {
@@ -62,10 +43,8 @@ const Footer = () => {
       setIsDarkMode(document.documentElement.classList.contains('dark'));
     };
     
-    // Initial check
     updateDarkMode();
     
-    // Observe changes to dark class
     const observer = new MutationObserver(updateDarkMode);
     observer.observe(document.documentElement, {
       attributes: true,
@@ -123,19 +102,19 @@ const Footer = () => {
         })}
       </script>
 
-      {/* Background - Different for light/dark mode */}
+      {/* Background */}
       <div className={`absolute inset-0 ${
         isDarkMode 
           ? "bg-gradient-to-b from-gray-900 via-gray-900/95 to-gray-900" 
           : "bg-gradient-to-b from-navy via-navy/95 to-navy"
       }`} />
       
-      {/* Shooting Stars - Adjusted for dark mode */}
+      {/* Shooting Stars */}
       <div className="absolute inset-0 overflow-hidden">
         <ShootingStars />
       </div>
       
-      {/* Gradient overlay - Adjusted opacity for dark mode */}
+      {/* Gradient overlay */}
       <div className={`absolute inset-0 pointer-events-none ${
         isDarkMode 
           ? "bg-gradient-to-t from-gray-900 via-gray-900/90 to-gray-900/80" 
@@ -151,11 +130,11 @@ const Footer = () => {
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         {/* Main Content Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-12 gap-8 mb-10">
+        <div className="grid md:grid-cols-2 lg:grid-cols-12 gap-8 mb-8">
           
           {/* Brand Column */}
-          <div className="lg:col-span-5 space-y-6">
-            <div className="flex items-start gap-4">
+          <div className="lg:col-span-5 space-y-4">
+            <div className="flex items-start gap-3">
               {/* Logo with scroll to top */}
               <motion.button
                 onClick={scrollToTop}
@@ -194,7 +173,7 @@ const Footer = () => {
                 </div>
               </motion.button>
               
-              <div className="space-y-3">
+              <div className="space-y-2">
                 <h1 className={`text-2xl font-bold tracking-tight ${
                   isDarkMode ? "text-white" : "text-background"
                 }`}>
@@ -212,30 +191,20 @@ const Footer = () => {
               </div>
             </div>
 
-            {/* Language Section */}
-            <div className="mt-6">
+            {/* Language Section (AnimatedLogo) */}
+            <div className="mt-4">
               <AnimatedLogo />
-              <motion.p 
-                className="text-gold font-script text-xl mt-3 flex items-center gap-2"
-                animate={{ 
-                  textShadow: ["0 0 10px rgba(245,158,11,0)", "0 0 10px rgba(245,158,11,0.3)", "0 0 10px rgba(245,158,11,0)"]
-                }}
-                transition={{ duration: 2, repeat: Infinity }}
-              >
-                <Sparkles className="w-4 h-4" />
-                Own Your Story
-                <Sparkles className="w-4 h-4" />
-              </motion.p>
+              {/* Removed Sparkles and Own Your Story text */}
             </div>
           </div>
 
           {/* Links Grid */}
           <div className="lg:col-span-7">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
               {/* Company Links */}
               <div>
                 <motion.h2 
-                  className={`font-semibold mb-5 text-sm tracking-wider uppercase relative inline-block ${
+                  className={`font-semibold mb-4 text-sm tracking-wider uppercase relative inline-block ${
                     isDarkMode ? "text-white" : "text-background"
                   }`}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -254,7 +223,7 @@ const Footer = () => {
                     viewport={{ once: true }}
                   />
                 </motion.h2>
-                <ul className="space-y-2.5">
+                <ul className="space-y-2">
                   {footerLinks.company.map((link, index) => (
                     <motion.li 
                       key={link.label}
@@ -289,7 +258,7 @@ const Footer = () => {
               {/* Resources Links */}
               <div>
                 <motion.h2 
-                  className={`font-semibold mb-5 text-sm tracking-wider uppercase relative inline-block ${
+                  className={`font-semibold mb-4 text-sm tracking-wider uppercase relative inline-block ${
                     isDarkMode ? "text-white" : "text-background"
                   }`}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -308,7 +277,7 @@ const Footer = () => {
                     viewport={{ once: true }}
                   />
                 </motion.h2>
-                <ul className="space-y-2.5">
+                <ul className="space-y-2">
                   {footerLinks.resources.map((link, index) => (
                     <motion.li 
                       key={link.label}
@@ -359,7 +328,7 @@ const Footer = () => {
               {/* Legal Links */}
               <div>
                 <motion.h2 
-                  className={`font-semibold mb-5 text-sm tracking-wider uppercase relative inline-block ${
+                  className={`font-semibold mb-4 text-sm tracking-wider uppercase relative inline-block ${
                     isDarkMode ? "text-white" : "text-background"
                   }`}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -378,7 +347,7 @@ const Footer = () => {
                     viewport={{ once: true }}
                   />
                 </motion.h2>
-                <ul className="space-y-2.5">
+                <ul className="space-y-2">
                   {footerLinks.legal.map((link, index) => (
                     <motion.li 
                       key={link.label}
@@ -410,45 +379,32 @@ const Footer = () => {
               </div>
             </div>
 
-            {/* Contact & Social Links */}
-            <div className="mt-10">
-              <p className={`text-sm mb-4 ${
+            {/* Contact & Social Links - text only, no icons */}
+            <div className="mt-8">
+              <p className={`text-sm mb-3 ${
                 isDarkMode ? "text-gray-400" : "text-background/60"
               }`}>
                 Contact us
               </p>
-              <div className="flex flex-wrap items-center gap-3">
+              <div className="flex flex-wrap items-center gap-4">
                 {socialLinks.map((social, index) => (
                   <motion.a
                     key={social.label}
                     href={social.href}
                     target={social.href.startsWith('http') ? "_blank" : undefined}
                     rel="noopener noreferrer"
-                    aria-label={social.ariaLabel || social.label}
-                    className="relative group"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.3, delay: index * 0.1 }}
+                    aria-label={social.ariaLabel}
+                    className={`text-sm transition-colors ${
+                      isDarkMode 
+                        ? "text-gray-400 hover:text-primary" 
+                        : "text-background/60 hover:text-primary"
+                    }`}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ duration: 0.3, delay: index * 0.05 }}
                     viewport={{ once: true }}
-                    whileHover={{ 
-                      y: -3,
-                      transition: { type: "spring", stiffness: 400, damping: 25 }
-                    }}
                   >
-                    <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 border ${
-                      isDarkMode 
-                        ? "bg-gray-800/30 text-gray-300 border-gray-700/50 group-hover:bg-primary/20 group-hover:text-primary group-hover:border-primary/40"
-                        : "bg-background/5 text-background/60 border-background/10 group-hover:bg-background/10 group-hover:text-primary group-hover:border-primary/30"
-                    }`}>
-                      <social.icon size={18} />
-                    </div>
-                    <span className={`absolute -top-8 left-1/2 transform -translate-x-1/2 px-2 py-1 text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap border ${
-                      isDarkMode 
-                        ? "bg-gray-900 text-gray-100 border-gray-700" 
-                        : "bg-navy text-background border-background/10"
-                    }`}>
-                      {social.label}
-                    </span>
+                    {social.label}
                   </motion.a>
                 ))}
                 {/* Direct contact info for SEO */}
@@ -465,7 +421,7 @@ const Footer = () => {
 
         {/* Newsletter Form */}
         <motion.div 
-          className={`mb-10 p-5 rounded-xl border backdrop-blur-sm ${
+          className={`mb-8 p-5 rounded-xl border backdrop-blur-sm ${
             isDarkMode 
               ? "bg-gray-900/40 border-gray-700/30" 
               : "bg-gradient-to-r from-background/5 via-background/10 to-background/5 border-background/10"
@@ -533,41 +489,22 @@ const Footer = () => {
           </form>
         </motion.div>
 
-        {/* Bottom Bar */}
-        <div className={`pt-6 flex flex-col md:flex-row justify-between items-center gap-4 ${
-          isDarkMode 
-            ? "border-t border-gray-800" 
-            : "border-t border-background/10"
+        {/* Bottom Bar - Centered copyright */}
+        <div className={`pt-6 text-center border-t ${
+          isDarkMode ? "border-gray-800" : "border-background/10"
         }`}>
-          <div className="flex items-center gap-2 text-sm order-2 md:order-1">
-            <motion.span
-              animate={{ scale: [1, 1.1, 1] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-              className={`flex items-center gap-1 ${
-                isDarkMode ? "text-gray-500" : "text-background/50"
-              }`}
-            >
-              <Heart className="w-4 h-4 text-coral fill-coral" aria-hidden="true" />
-              <span>© {currentYear} Welluno Pvt Ltd. All rights reserved.</span>
-            </motion.span>
-            <span className={`hidden md:inline ${
-              isDarkMode ? "text-gray-600" : "text-background/30"
-            }`} aria-hidden="true">•</span>
-            <span className={`hidden md:inline ${
+          <div className="flex flex-col items-center gap-1">
+            <span className={`text-sm ${
               isDarkMode ? "text-gray-500" : "text-background/50"
+            }`}>
+              © {currentYear} Welluno Pvt Ltd. All rights reserved.
+            </span>
+            <span className={`text-xs ${
+              isDarkMode ? "text-gray-600" : "text-background/40"
             }`}>
               Corporate wellness solutions for happier workplaces
             </span>
           </div>
-
-          
-        </div>
-
-        {/* Mobile message */}
-        <div className={`md:hidden text-center text-xs mt-4 ${
-          isDarkMode ? "text-gray-600" : "text-background/40"
-        }`}>
-          Corporate wellness solutions for happier workplaces
         </div>
 
         {/* SEO Keywords in hidden div */}

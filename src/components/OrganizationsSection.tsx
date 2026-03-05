@@ -1,27 +1,10 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
-import { 
-  TrendingUp, 
-  Heart, 
-  Users, 
-  Shield, 
-  ArrowRight, 
-  Building2, 
-  Sparkles, 
-  Target, 
-  Zap, 
-  BarChart3,
-  ChevronRight,
-  Eye,
-  Calendar,
-  Bell,
-  MessageSquare
-} from "lucide-react";
+// All icon imports removed
 
 const benefits = [
   {
-    icon: TrendingUp,
     stat: "32%",
     label: "Productivity Boost",
     description: "Happier employees perform better",
@@ -29,7 +12,6 @@ const benefits = [
     darkGradient: "from-emerald-400 to-teal-300",
   },
   {
-    icon: Heart,
     stat: "67%",
     label: "Reduced Burnout",
     description: "Prevention-first approach works",
@@ -37,7 +19,6 @@ const benefits = [
     darkGradient: "from-rose-400 to-pink-300",
   },
   {
-    icon: Users,
     stat: "4x",
     label: "Better Retention",
     description: "People stay where they thrive",
@@ -45,7 +26,6 @@ const benefits = [
     darkGradient: "from-blue-400 to-cyan-300",
   },
   {
-    icon: Shield,
     stat: "89%",
     label: "Feel Supported",
     description: "Real community, real care",
@@ -136,7 +116,7 @@ const OrganizationsSection = () => {
     };
   }, []);
 
-  // Confetti function
+  // Confetti function (icons removed, only effects remain)
   const triggerConfetti = () => {
     setSurpriseActive(true);
     setTimeout(() => setSurpriseActive(false), 1000);
@@ -172,7 +152,7 @@ const OrganizationsSection = () => {
     }
   };
 
-  // Helper function to get gradient colors
+  // Helper function to get gradient colors (unchanged)
   const getGradientColors = (gradientString: string) => {
     const colors = gradientString.split('from-')[1].split(' to-');
     const fromColor = colors[0].split(' ')[0];
@@ -193,7 +173,7 @@ const OrganizationsSection = () => {
       </motion.div>
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
-        {/* Header - Fixed dark mode text */}
+        {/* Header - icon removed */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -206,7 +186,7 @@ const OrganizationsSection = () => {
             transition={{ type: "spring", delay: 0.2 }}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-50 to-teal-50 dark:from-blue-900/20 dark:to-teal-900/20 border border-blue-100 dark:border-blue-800/30 mb-4"
           >
-            <Building2 className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+            {/* Building2 icon removed */}
             <span className="text-sm font-semibold text-blue-700 dark:text-blue-300 uppercase tracking-wider">
               For Organizations
             </span>
@@ -227,34 +207,30 @@ const OrganizationsSection = () => {
 
         {/* Content Grid */}
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
-          {/* Left Content - UPDATED TEXT */}
+          {/* Left Content - icons removed, padding reduced */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="space-y-6 mb-8">
+            <div className="space-y-4 mb-8"> {/* Reduced space-y from 6 to 4 */}
               {[
                 {
-                  icon: Eye,
                   text: "Actionable culture insights for leadership",
                   subtext: "Understand team engagement and well-being through participation trends and event feedback.",
                   color: "text-blue-600 dark:text-blue-400"
                 },
                 {
-                  icon: Calendar,
                   text: "Customized wellness programs",
                   subtext: "Tailored live experiences designed around your team's needs, energy levels, and culture.",
                   color: "text-emerald-600 dark:text-emerald-400"
                 },
                 {
-                  icon: Sparkles,
                   text: "Event-based engagement employees actually enjoy",
                   subtext: "Wellness that feels natural, social, and voluntary — not forced or screen-based.",
                   color: "text-amber-600 dark:text-amber-400"
                 },
                 {
-                  icon: Bell,
                   text: "Early signals, shared safely",
                   subtext: "Anonymous feedback and observations that help identify stress points before burnout escalates.",
                   color: "text-purple-600 dark:text-purple-400"
@@ -267,28 +243,20 @@ const OrganizationsSection = () => {
                   transition={{ duration: 0.4, delay: 0.3 + i * 0.1 }}
                   className="group bg-white dark:bg-gray-800/50 rounded-xl p-4 border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-300 hover:shadow-md"
                 >
-                  <div className="flex items-start gap-4">
-                    <motion.div
-                      className={`flex-shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br ${item.color} flex items-center justify-center`}
-                      animate={{ scale: [1, 1.1, 1] }}
-                      transition={{ duration: 2, repeat: Infinity, delay: i * 0.3 }}
-                    >
-                      <item.icon className="w-5 h-5 text-white" />
-                    </motion.div>
-                    <div className="flex-1">
-                      <h4 className="font-semibold text-gray-900 dark:text-white mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                        {item.text}
-                      </h4>
-                      <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                        {item.subtext}
-                      </p>
-                    </div>
+                  {/* Icon container removed, only text remains */}
+                  <div>
+                    <h4 className="font-semibold text-gray-900 dark:text-white mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                      {item.text}
+                    </h4>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                      {item.subtext}
+                    </p>
                   </div>
                 </motion.div>
               ))}
             </div>
 
-            {/* CTA Button with Confetti */}
+            {/* CTA Button - arrow removed, text only */}
             <motion.button
               onClick={() => {
                 handleNavigation('#contact');
@@ -300,11 +268,11 @@ const OrganizationsSection = () => {
             >
               <span className="relative z-10 flex items-center justify-center gap-2">
                 Partner With Us
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                {/* ArrowRight icon removed */}
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-blue-700 to-teal-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               
-              {/* Sparkle effect */}
+              {/* Sparkle effect (kept for confetti) */}
               {surpriseActive && (
                 <div className="absolute inset-0">
                   {[...Array(5)].map((_, i) => (
@@ -337,7 +305,7 @@ const OrganizationsSection = () => {
             </p>
           </motion.div>
 
-          {/* Right Stats Grid - Fixed dark mode text and transitions */}
+          {/* Right Stats Grid - icons removed, padding reduced */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -366,19 +334,13 @@ const OrganizationsSection = () => {
                 >
                   <div 
                     onClick={() => handleNavigation(`#benefit-${index}`)}
-                    className="cursor-pointer bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-5 shadow-sm hover:shadow-lg transition-all duration-300"
+                    className="cursor-pointer bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-4 shadow-sm hover:shadow-lg transition-all duration-300"
                   >
-                    <motion.div
-                      className={`inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-br ${benefit.gradient} dark:${benefit.darkGradient} mb-4`}
-                      whileHover={{ rotate: 10, scale: 1.1 }}
-                      transition={{ type: "spring" }}
-                    >
-                      <benefit.icon className="w-6 h-6 text-white" />
-                    </motion.div>
+                    {/* Icon container removed */}
 
-                    {/* Stat number with gradient - fixed dark mode */}
+                    {/* Stat number with gradient */}
                     <div 
-                      className="text-3xl font-bold mb-2 bg-clip-text text-transparent"
+                      className="text-3xl font-bold mb-1 bg-clip-text text-transparent"
                       style={{
                         backgroundImage: `linear-gradient(135deg, 
                           rgb(var(--${gradientColors.fromColor})),
@@ -397,14 +359,15 @@ const OrganizationsSection = () => {
                       {benefit.description}
                     </p>
 
-                    {/* Hover indicator */}
+                    {/* Hover indicator (ChevronRight removed) */}
                     <motion.div
-                      className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-gray-400 dark:text-gray-500"
                       initial={{ x: -5 }}
                       animate={{ x: 0 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <ChevronRight className="w-4 h-4 text-gray-400 dark:text-gray-500" />
+                      {/* Replaced icon with simple arrow text */}
+                      →
                     </motion.div>
                   </div>
                 </motion.div>
@@ -413,7 +376,7 @@ const OrganizationsSection = () => {
           </motion.div>
         </div>    
 
-        {/* Quote - Fixed dark mode text */}
+        {/* Quote */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}

@@ -5,33 +5,7 @@ import {
   AnimatePresence,
   Variants 
 } from 'framer-motion';
-import { 
-  Users, 
-  Briefcase, 
-  UserCircle, 
-  Target,
-  Linkedin, 
-  Mail, 
-  Globe, 
-  Sparkles,
-  Star, 
-  X, 
-  ExternalLink, 
-  Crown, 
-  Brain,
-  BarChart3, 
-  Gem, 
-  Clock, 
-  BookOpen,
-  Award, 
-  Zap,
-  ChevronRight,
-  MapPin,
-  TrendingUp,
-  Shield,
-  Heart,
-  Lightbulb
-} from 'lucide-react';
+import { X, ChevronRight } from 'lucide-react';
 
 interface BoardMember {
   id: number;
@@ -41,7 +15,6 @@ interface BoardMember {
   description?: string;
   expertise?: string[];
   color: string;
-  icon: any;
   achievements?: number;
   years?: number;
   impact?: string;
@@ -63,12 +36,10 @@ const boardMembers: BoardMember[] = [
     role: "Founder",
     boardPosition: "Board Advisory",
     color: "from-blue-500 to-cyan-500",
-    icon: Crown,
     contact: {
       email: "vanshmani@welluno.in"
     },
     quote: "Protect your mind with the same commitment you pursue your goals — it is the foundation of everything you build."
-    // image: '/assets/vanshmani.png'
   },
   {
     id: 2,
@@ -76,10 +47,8 @@ const boardMembers: BoardMember[] = [
     role: "CEO",
     boardPosition: "Board Advisory",
     color: "from-purple-500 to-pink-500",
-    icon: Briefcase,
     contact: {
-      email: "aastha@welluno.in",
-      linkedin: "https://linkedin.com/in/kumari-astha-"
+      email: "aastha@welluno.in"
     },
     quote: "Mental health is not separate from success; it is the clarity and strength that make success sustainable."
   },
@@ -89,7 +58,6 @@ const boardMembers: BoardMember[] = [
     role: "Strategic Advisor",
     boardPosition: "Admin Lead",
     color: "from-amber-500 to-orange-500",
-    icon: Brain,
     contact: {
       email: "amit@welluno.in"
     },
@@ -101,10 +69,10 @@ const boardMembers: BoardMember[] = [
     role: "Chief People Officer",
     boardPosition: "HR Lead",
     color: "from-green-500 to-emerald-500",
-    icon: Users,
-    contact: {},
+    contact: {
+      email: "raghav@welluno.in"
+    },
     quote: "True resilience is built in small, intentional moments of self-awareness practiced every day."
-    // image not available
   }
 ];
 
@@ -115,7 +83,6 @@ const BoardMembersSection = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [isDark, setIsDark] = useState(false);
 
-  // Dark mode detection
   useEffect(() => {
     const checkDarkMode = () => {
       setIsDark(document.documentElement.classList.contains('dark'));
@@ -132,7 +99,6 @@ const BoardMembersSection = () => {
     return () => observer.disconnect();
   }, []);
 
-  // Animation variants
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
@@ -198,7 +164,6 @@ const BoardMembersSection = () => {
     }
   };
 
-  // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (selectedMember) {
@@ -310,7 +275,6 @@ const BoardMembersSection = () => {
             transition={{ delay: 0.2 }}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/10 dark:border-blue-500/20 mb-6"
           >
-            <Gem className="w-4 h-4 text-blue-600 dark:text-blue-400" />
             <span className="text-sm font-medium text-blue-700 dark:text-blue-300 uppercase tracking-wider">
               Executive Leadership
             </span>
@@ -349,7 +313,7 @@ const BoardMembersSection = () => {
           </motion.p>
         </motion.header>
 
-        {/* Board Members Grid - centered and improved */}
+        {/* Board Members Grid */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -359,7 +323,6 @@ const BoardMembersSection = () => {
           aria-label="Board members list"
         >
           {boardMembers.map((member, index) => {
-            const Icon = member.icon;
             const isHovered = hoveredIndex === index;
             
             return (
@@ -406,28 +369,11 @@ const BoardMembersSection = () => {
                     `}>
                       {/* Header */}
                       <div className="flex items-start justify-between mb-4">
-                        {/* Profile Image or Icon */}
-                        <div className={`
-                          w-12 h-12 md:w-14 md:h-14 
-                          ${member.image ? 'rounded-full' : 'rounded-xl'} 
-                          bg-gradient-to-br ${member.color} 
-                          flex items-center justify-center flex-shrink-0 overflow-hidden
-                          shadow-md
-                        `}>
-                          {member.image ? (
-                            <img 
-                              src={member.image} 
-                              alt={member.name} 
-                              className="w-full h-full object-cover"
-                            />
-                          ) : (
-                            <Icon className="w-6 h-6 md:w-7 md:h-7 text-white" />
-                          )}
-                        </div>
+                        {/* Removed icon placeholder div */}
 
-                        <div className="text-right">
+                        <div className="text-right w-full">
                           <div className={`
-                            text-xs font-semibold px-3 py-1 rounded-full
+                            text-xs font-semibold px-3 py-1 rounded-full inline-block
                             ${isDark 
                               ? 'bg-gray-800 text-gray-300 border border-gray-700' 
                               : 'bg-gray-100 text-gray-700 border border-gray-300'
@@ -437,7 +383,6 @@ const BoardMembersSection = () => {
                           </div>
                           {member.years ? (
                             <div className="text-xs text-gray-500 dark:text-gray-500 flex items-center gap-1 justify-end mt-1">
-                              <Clock className="w-3 h-3" />
                               <span>{member.years} yrs</span>
                             </div>
                           ) : null}
@@ -462,15 +407,13 @@ const BoardMembersSection = () => {
                         {/* Impact Metric – only if provided */}
                         {member.impact && (
                           <div className="mt-3 flex items-center gap-2 text-xs text-gray-600 dark:text-gray-400">
-                            <Target className="w-3 h-3 flex-shrink-0" />
                             <span className="font-medium truncate">{member.impact}</span>
                           </div>
                         )}
 
                         {/* Quote Preview – only if provided */}
                         {member.quote && (
-                          <div className="mt-3 flex items-start gap-2">
-                            <Lightbulb className="w-3 h-3 text-gray-400 dark:text-gray-500 mt-0.5 flex-shrink-0" />
+                          <div className="mt-3">
                             <blockquote className="text-xs text-gray-500 dark:text-gray-500 italic line-clamp-2">
                               "{member.quote}"
                             </blockquote>
@@ -519,7 +462,6 @@ const BoardMembersSection = () => {
                         {member.achievements ? (
                           <div className="flex items-center justify-between">
                             <div className="flex items-center gap-1">
-                              <Star className="w-3 h-3 text-yellow-500 fill-current" />
                               <span className="text-xs text-gray-700 dark:text-gray-300">{member.achievements}</span>
                               <span className="text-xs text-gray-500 dark:text-gray-500 ml-1">achievements</span>
                             </div>
@@ -536,15 +478,12 @@ const BoardMembersSection = () => {
                         )}
                       </div>
 
-                      {/* Contact Icons - subtle hint */}
+                      {/* Contact hint – only text */}
                       {(member.contact.linkedin || member.contact.email) && (
-                        <div className="absolute top-3 right-3 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                          {member.contact.linkedin && (
-                            <Linkedin className="w-3 h-3 text-blue-600 dark:text-blue-400" />
-                          )}
-                          {member.contact.email && (
-                            <Mail className="w-3 h-3 text-purple-600 dark:text-purple-400" />
-                          )}
+                        <div className="absolute top-3 right-3 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity text-xs text-gray-500 dark:text-gray-400">
+                          {member.contact.linkedin && <span>LinkedIn</span>}
+                          {member.contact.linkedin && member.contact.email && <span>•</span>}
+                          {member.contact.email && <span>Email</span>}
                         </div>
                       )}
                     </div>
@@ -598,8 +537,7 @@ const BoardMembersSection = () => {
             </div>
 
             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 text-center">
-              <div className="text-xs text-gray-500 dark:text-gray-500 flex items-center justify-center gap-2">
-                <BarChart3 className="w-3 h-3" />
+              <div className="text-xs text-gray-500 dark:text-gray-500">
                 Collaborative Leadership Network
               </div>
             </div>
@@ -607,7 +545,7 @@ const BoardMembersSection = () => {
         </motion.div>
       </div>
 
-      {/* Member Detail Modal – improved */}
+      {/* Member Detail Modal */}
       <AnimatePresence>
         {selectedMember && (
           <>
@@ -648,41 +586,23 @@ const BoardMembersSection = () => {
                   
                   <div className="relative z-10">
                     <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
-                      <div className="flex items-center gap-4 flex-1 min-w-0">
-                        {/* Modal profile image */}
-                        <div className={`
-                          w-16 h-16 md:w-20 md:h-20 
-                          ${selectedMember.image ? 'rounded-full' : 'rounded-full bg-white/10 backdrop-blur-sm'} 
-                          flex items-center justify-center border-2 border-white/20 flex-shrink-0 overflow-hidden
-                        `}>
-                          {selectedMember.image ? (
-                            <img 
-                              src={selectedMember.image} 
-                              alt={selectedMember.name} 
-                              className="w-full h-full object-cover"
-                            />
-                          ) : (
-                            <selectedMember.icon className="w-8 h-8 md:w-10 md:h-10 text-white" />
-                          )}
-                        </div>
-                        <div className="min-w-0">
-                          <h3 
-                            id="modal-title"
-                            className="text-2xl md:text-3xl font-bold text-white truncate"
-                            itemProp="name"
-                          >
-                            {selectedMember.name}
-                          </h3>
-                          <p className="text-white/90 text-base md:text-lg">
-                            {selectedMember.role}
-                          </p>
-                          {selectedMember.location && (
-                            <div className="flex items-center gap-1 mt-1">
-                              <MapPin className="w-4 h-4 text-white/70" />
-                              <span className="text-sm text-white/80">{selectedMember.location}</span>
-                            </div>
-                          )}
-                        </div>
+                      {/* Removed icon placeholder div */}
+                      <div className="flex-1 min-w-0">
+                        <h3 
+                          id="modal-title"
+                          className="text-2xl md:text-3xl font-bold text-white truncate"
+                          itemProp="name"
+                        >
+                          {selectedMember.name}
+                        </h3>
+                        <p className="text-white/90 text-base md:text-lg">
+                          {selectedMember.role}
+                        </p>
+                        {selectedMember.location && (
+                          <div className="flex items-center gap-1 mt-1">
+                            <span className="text-sm text-white/80">{selectedMember.location}</span>
+                          </div>
+                        )}
                       </div>
                       <div className="flex items-center gap-2">
                         <span className="px-3 py-1.5 rounded-full bg-white/20 text-white text-sm font-medium">
@@ -728,15 +648,14 @@ const BoardMembersSection = () => {
                   </div>
                 </div>
 
-                {/* Content – only render sections with data */}
+                {/* Content */}
                 <div className="p-6 md:p-8 max-h-[60vh] overflow-y-auto">
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     {/* Left Column */}
                     <div className="space-y-6">
                       {selectedMember.description && (
                         <div>
-                          <h4 className="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-3 flex items-center gap-2">
-                            <UserCircle className="w-4 h-4" />
+                          <h4 className="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-3">
                             About
                           </h4>
                           <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed" itemProp="description">
@@ -749,16 +668,13 @@ const BoardMembersSection = () => {
                         <div className={`p-4 rounded-lg border ${
                           isDark ? 'bg-gray-800/30 border-gray-700' : 'bg-gray-100 border-gray-300'
                         }`}>
-                          <div className="flex items-start gap-3">
-                            <Sparkles className="w-4 h-4 text-yellow-500 dark:text-yellow-400 mt-0.5 flex-shrink-0" />
-                            <div>
-                              <blockquote className="text-sm italic text-gray-700 dark:text-gray-300">
-                                "{selectedMember.quote}"
-                              </blockquote>
-                              <p className="text-gray-500 dark:text-gray-500 text-xs mt-2">
-                                — {selectedMember.name}
-                              </p>
-                            </div>
+                          <div>
+                            <blockquote className="text-sm italic text-gray-700 dark:text-gray-300">
+                              "{selectedMember.quote}"
+                            </blockquote>
+                            <p className="text-gray-500 dark:text-gray-500 text-xs mt-2">
+                              — {selectedMember.name}
+                            </p>
                           </div>
                         </div>
                       )}
@@ -820,10 +736,7 @@ const BoardMembersSection = () => {
                             <div className={`p-3 rounded-lg ${
                               isDark ? 'bg-gray-800/20' : 'bg-gray-100'
                             }`}>
-                              <div className="flex items-center gap-2 mb-1">
-                                <Clock className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-                                <div className="text-xs text-gray-600 dark:text-gray-400">Experience</div>
-                              </div>
+                              <div className="text-xs text-gray-600 dark:text-gray-400 mb-1">Experience</div>
                               <div className="text-lg font-bold text-gray-900 dark:text-white">
                                 {selectedMember.years}+ years
                               </div>
@@ -833,10 +746,7 @@ const BoardMembersSection = () => {
                             <div className={`p-3 rounded-lg ${
                               isDark ? 'bg-gray-800/20' : 'bg-gray-100'
                             }`}>
-                              <div className="flex items-center gap-2 mb-1">
-                                <Award className="w-4 h-4 text-yellow-600 dark:text-yellow-400" />
-                                <div className="text-xs text-gray-600 dark:text-gray-400">Achievements</div>
-                              </div>
+                              <div className="text-xs text-gray-600 dark:text-gray-400 mb-1">Achievements</div>
                               <div className="text-lg font-bold text-gray-900 dark:text-white">
                                 {selectedMember.achievements}
                               </div>
@@ -846,10 +756,7 @@ const BoardMembersSection = () => {
                             <div className={`p-3 rounded-lg col-span-2 ${
                               isDark ? 'bg-gray-800/20' : 'bg-gray-100'
                             }`}>
-                              <div className="flex items-center gap-2 mb-1">
-                                <Target className="w-4 h-4 text-green-600 dark:text-green-400" />
-                                <div className="text-xs text-gray-600 dark:text-gray-400">Key Impact</div>
-                              </div>
+                              <div className="text-xs text-gray-600 dark:text-gray-400 mb-1">Key Impact</div>
                               <div className="text-sm font-medium text-gray-900 dark:text-white">
                                 {selectedMember.impact}
                               </div>
@@ -878,7 +785,6 @@ const BoardMembersSection = () => {
                                 `}
                                 itemProp="sameAs"
                               >
-                                <Linkedin className="w-4 h-4 text-blue-600 dark:text-blue-400" />
                                 <span className="text-xs text-gray-700 dark:text-gray-300">LinkedIn</span>
                               </a>
                             )}
@@ -894,7 +800,6 @@ const BoardMembersSection = () => {
                                 `}
                                 itemProp="email"
                               >
-                                <Mail className="w-4 h-4 text-purple-600 dark:text-purple-400" />
                                 <span className="text-xs text-gray-700 dark:text-gray-300">Email</span>
                               </a>
                             )}
@@ -912,7 +817,6 @@ const BoardMembersSection = () => {
                                 `}
                                 itemProp="url"
                               >
-                                <Globe className="w-4 h-4 text-gray-600 dark:text-gray-400" />
                                 <span className="text-xs text-gray-700 dark:text-gray-300">Personal Website</span>
                               </a>
                             )}
@@ -943,7 +847,6 @@ const BoardMembersSection = () => {
                             flex items-center justify-center gap-2
                           `}
                         >
-                          <ExternalLink className="w-4 h-4" />
                           View Full Profile
                         </a>
                       </>

@@ -1,7 +1,7 @@
 ---
 title: 'Mental Health at Work: Why Corporate Professionals Are Burning Out Faster Than Ever'
 description: 'Workplace stress and corporate burnout are rising faster than ever. Discover why mental health at work is foundational for sustainable success.'
-date: '2025-03-21'
+date: '2026-03-01'
 slug: 'mental-health-work-burnout'
 ---
 
